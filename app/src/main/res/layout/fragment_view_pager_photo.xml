@@ -17,11 +17,23 @@
         android:textColor="#ffffff"
         android:textSize="20dp" />
 
-
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewpager2"
+        android:id="@+id/viewPagerPhoto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="59dp" />
+        android:layout_marginBottom="59dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
+
+    <ImageView
+        android:id="@+id/ivSave"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="30dp"
+        android:clickable="true"
+        android:src="@drawable/download_image" />
+
 
 </FrameLayout>

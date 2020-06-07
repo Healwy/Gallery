@@ -38,18 +38,26 @@ class GalleryAdapter : ListAdapter<PhotoItem, GalleryAdapter.MyViewHolder>(DIFFC
         holder.itemView.setOnClickListener {
             Bundle().apply {
                 putParcelableArrayList("PHOTO_LIST", ArrayList(currentList))
-                putInt("PHOTO_POSITION",holder.adapterPosition)
-                holder.itemView.findNavController().navigate(R.id.action_galleryFragment_to_viewPagerPhotoFragment2,this)
+                putInt("PHOTO_POSITION", holder.adapterPosition)
+                holder.itemView.findNavController()
+                    .navigate(R.id.action_galleryFragment_to_viewPagerPhotoFragment2, this)
             }
         }
         return holder
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.shimmerlayoutCell.apply {
-            setShimmerColor(0x55ffffff)
-            setShimmerAngle(0)
-            startShimmerAnimation()
+        val photo = getItem(position)
+        with(holder.itemView){
+            shimmerlayoutCell.apply {
+                setShimmerColor(0x55ffffff)
+                setShimmerAngle(0)
+                startShimmerAnimation()
+            }
+            imageView2.layoutParams.height =photo.photoHeight
+            tvFavorites.text = photo.photoFavorites.toString()
+            tvUser.text = photo.photoUser
+            tvLikes.text = photo.photoLikes.toString()
         }
         Glide.with(holder.itemView)
             .load(getItem(position).previewUrl)

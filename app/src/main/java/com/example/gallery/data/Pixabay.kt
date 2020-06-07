@@ -31,8 +31,13 @@ data class Pixabay(
 }
 
 
-@Parcelize data class PhotoItem(
+@Parcelize
+data class PhotoItem(
     @SerializedName("webformatURL") val previewUrl: String,
     @SerializedName("id") val photoId: Int,
-    @SerializedName("largeImageURL") val fullUrl: String
-):Parcelable
+    @SerializedName("largeImageURL") val fullUrl: String,
+    @SerializedName("webformatHeight") val photoHeight: Int,
+    @SerializedName("user") val photoUser: String,
+    @SerializedName("favorites") val photoFavorites: Int,
+    @SerializedName("likes") val photoLikes: Int
+) : Parcelable
